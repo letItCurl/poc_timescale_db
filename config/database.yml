@@ -19,10 +19,18 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-
 development:
-  <<: *default
-  database: poc_timescale_db_development
+  primary:
+    <<: *default
+    database: poc_timescale_db_development
+  secondary:
+    <<: *default
+    database: poc_timescale_db_secondary_development
+    migrations_paths: db/timescale_db
+    port: 6432
+    username: postgres
+    host: localhost
+    password: password
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.

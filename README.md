@@ -1,24 +1,25 @@
 # README
+> **Simple Demo**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Prerequisites
+- Docker
+- Rails (you should be able to create and start a new Rails project)
 
-Things you may want to cover:
+### Development Environment
+Run the following command to start the development environment:
+```bash
+bin/dev
+```
 
-* Ruby version
+### Generators
+To generate a scaffold for `KeywordMetric` with the `secondary` database, use:
+```bash
+rails g scaffold KeywordMetric keyword:string volume:integer --database=secondary
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Schema Manipulation
+Create and migrate the schema for the `secondary` database:
+```bash
+rails db:create:secondary
+rails db:migrate:secondary
+```
